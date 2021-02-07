@@ -29,8 +29,8 @@ function addPric (arra,blockCurrency){
     }
 }
 
-setTimeout(addPrice,300)
-setTimeout(addPric,300)
+setTimeout(addPrice,400)
+setTimeout(addPric,400)
 console.log(arrayBuy)
 console.log(arraySale)
 
