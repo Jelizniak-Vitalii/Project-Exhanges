@@ -6,33 +6,38 @@ let secondCurrency = document.querySelectorAll('.second-currency');
 let arrayBuy = [];
 let arraySale = [];
 
-
-fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
-.then(response => response.json()).then(el =>{
-    el.forEach(el =>{
-        arrayBuy.push(el.buy)
-        arraySale.push(el.sale)
+async function getApi (){
+   await fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+        .then(response => response.json()).then(el =>{
+            el.forEach(el =>{
+                arrayBuy.push(el.buy)
+                arraySale.push(el.sale)
     })
+    return (arrayBuy,arraySale);
 })
-
-
-function addPrice (arra,blockCurrency){
-    for(let i = 0; i < arrayBuy.length; i++){
-        let valFixNumber = parseFloat(arrayBuy[i]).toFixed(2);
-        firstCurrency[i].innerHTML = valFixNumber;
-    }
 }
-function addPric (arra,blockCurrency){
-    for(let i = 0; i < arraySale.length; i++){
-        let valFixNumber = parseFloat(arraySale[i]).toFixed(2);
-        secondCurrency[i].innerHTML = valFixNumber;
+
+function addPrice (arrayValue,blockCurrency){
+    for(let i = 0; i < arrayValue.length; i++){
+        let valFixNumber = parseFloat(arrayValue[i]).toFixed(2);
+        blockCurrency[i].innerHTML = valFixNumber;
     }
 }
 
-setTimeout(addPrice,800)
-setTimeout(addPric,800)
-console.log(arrayBuy)
-console.log(arraySale)
+async function go (){
+    await getApi();
+    addPrice(arrayBuy,firstCurrency);
+    addPrice(arraySale,secondCurrency)
+    
+}
+go()
+// function addPric (arra,blockCurrency){
+//     for(let i = 0; i < arraySale.length; i++){
+//         let valFixNumber = parseFloat(arraySale[i]).toFixed(2);
+//         secondCurrency[i].innerHTML = valFixNumber;
+//     }
+// }
+
 
 function zero_first_format(value){
         if (value < 10){
@@ -42,13 +47,13 @@ function zero_first_format(value){
 }
 
 function getTime (){
-    var current_datetime = new Date();
-        var day = zero_first_format(current_datetime.getDate());
-        var month = zero_first_format(current_datetime.getMonth()+1);
-        var year = current_datetime.getFullYear();
-        var hours = zero_first_format(current_datetime.getHours());
-        var minutes = zero_first_format(current_datetime.getMinutes());
-        var seconds = zero_first_format(current_datetime.getSeconds());
+        let current_datetime = new Date();
+        let day = zero_first_format(current_datetime.getDate());
+        let month = zero_first_format(current_datetime.getMonth()+1);
+        let year = current_datetime.getFullYear();
+        let hours = zero_first_format(current_datetime.getHours());
+        let minutes = zero_first_format(current_datetime.getMinutes());
+        let seconds = zero_first_format(current_datetime.getSeconds());
 
         return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
 }
@@ -58,3 +63,4 @@ setInterval(function(){
     newTime.innerHTML = getTime()
     site.appendChild(newTime)
 },100)
+
