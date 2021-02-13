@@ -2,41 +2,117 @@ let site = document.querySelector('.date');
 let newTime = document.createElement('span');
 let firstCurrency = document.querySelectorAll('.first-currency');
 let secondCurrency = document.querySelectorAll('.second-currency');
+let nameValue = document.querySelectorAll('.name-value')
 
 let arrayBuy = [];
 let arraySale = [];
+let arrayCurrency = [];
 
-async function getApi (){
-   await fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
-        .then(response => response.json()).then(el =>{
-            el.forEach(el =>{
-                arrayBuy.push(el.buy)
-                arraySale.push(el.sale)
-    })
-    return (arrayBuy,arraySale);
-})
-}
+// async function getApi (){
+//    await fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+//         .then(response => response.json()).then(el =>{
+//             el.forEach(el =>{
+//                 arrayBuy.push(el.buy)
+//                 arraySale.push(el.sale)
+//                 console.log(el)
+//     })
+//     return (arrayBuy,arraySale)
+// })
+// }
 
-function addPrice (arrayValue,blockCurrency){
-    for(let i = 0; i < arrayValue.length; i++){
-        let valFixNumber = parseFloat(arrayValue[i]).toFixed(2);
-        blockCurrency[i].innerHTML = valFixNumber;
-    }
-}
-
-async function go (){
-    await getApi();
-    addPrice(arrayBuy,firstCurrency);
-    addPrice(arraySale,secondCurrency)
-    
-}
-go()
+// function addValueCurrency (arrayValue,blockCurrency){
+//     for(let i = 0; i < arrayValue.length; i++){
+//         let valFixNumber = parseFloat(arrayValue[i]).toFixed(2);
+//         blockCurrency[i].innerHTML = valFixNumber;
+//     }
+// }
 // function addPric (arra,blockCurrency){
 //     for(let i = 0; i < arraySale.length; i++){
 //         let valFixNumber = parseFloat(arraySale[i]).toFixed(2);
 //         secondCurrency[i].innerHTML = valFixNumber;
 //     }
 // }
+// async function go (){
+//     await getApi()
+//     addValueCurrency()
+//     addPric();
+    
+// }
+// go()
+
+
+let url = ('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+
+async function getApi (){
+    try{
+        let response = await fetch(url)
+        let data = await response.json()
+        console.log(data)
+        return getInfo(data)  //функция для добавления значений на страницу
+    } catch (err){
+        console.error(err);
+    }
+    
+}
+getApi()
+
+function getInfo (val){
+    val.forEach(el=>{
+        arrayCurrency.push(el.ccy)
+        arrayBuy.push(el.buy)
+        arraySale.push(el.sale)
+
+        addNameCurrency(arrayCurrency);
+        showCurrency(arrayBuy,firstCurrency);
+        showCurrency(arraySale,secondCurrency);
+        console.log(arrayCurrency)
+    })
+    
+    
+}
+
+function addNameCurrency (val){
+    for(let i = 0; i < val.length; i++){
+        if(val[i] === 'RUR'){
+            val[i] = 'RUB'
+        }
+        nameValue[i].textContent = (val[i]+'/UAH')
+    }
+}
+function showCurrency (arrayValue,blockCurrency){
+    for(let i = 0; i < arrayValue.length; i++){
+                let valFixNumber = parseFloat(arrayValue[i]).toFixed(2);
+                blockCurrency[i].innerHTML = valFixNumber;
+
+            }
+}
+
+
+// function sendRequest (method){
+//     return new Promise((resolve,reject)=>{
+
+//     const xhr = new XMLHttpRequest();
+
+//     xhr.open(method, url);
+
+//     xhr.responseType = 'json';
+
+//     xhr.onload = () =>{
+//     if(xhr.status >= 400){
+//         console.error(xhr.response)
+//     }
+//     else{
+//         resolve(xhr.response)
+//     }
+    
+// }
+//     xhr.onerror = ()=>{
+//     reject(xhr.response)
+// }
+//     xhr.send();
+// })
+// }
+// sendRequest('GET').then(data => console.log(data))
 
 
 function zero_first_format(value){
