@@ -1,18 +1,35 @@
+//                   Settings
+@import "reset.scss";
+
+
+
+
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};    }
+}
+@import "fonts";
+
+ //                 Settings
+
 
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Yusei+Magic&display=swap');
 
 body{
-    /* background-color:#000080 */
     background: rgb(29,47,101);
-background: linear-gradient(90deg, rgba(29,47,101,0.989233193277311) 0%, rgba(26,92,120,1) 45%, rgba(12,94,107,1) 100%);
+    background: linear-gradient(90deg, rgba(29,47,101,0.989233193277311) 0%, rgba(26,92,120,1) 45%, rgba(12,94,107,1) 100%);
 }
 .container{
     max-width: 80%;
     margin: 0 auto;
 }
 header{
-    margin-top: 150px;
+    margin-top: 20px;
 }
 .header-title{
     text-align: center;
@@ -21,9 +38,6 @@ header{
     padding-bottom: 15px;
     color: antiquewhite;
     font-family: 'Roboto', sans-serif;
-}
-.price{
-    color: red;
 }
 
 
@@ -38,11 +52,6 @@ header{
     padding-top: 20px;
     font-family: 'Yusei Magic', sans-serif;
 }
-.site-title h3{
-    color: tomato;
-    font-weight: 700;
-    font-size: 50px;
-}
 .date{
     padding-top: 20px;
     color: blanchedalmond;
@@ -56,6 +65,54 @@ header{
     color: blanchedalmond;
     font-size: 25px;
     padding-left: 10px;
+}
+
+
+// 
+
+.container-converter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.converter-title{
+    padding: 1rem;
+    border: 2px solid black;
+    background-color: #b2cc25;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+.block-converter{
+    width: 450px;
+    height: 250px;
+    background: rgb(167,170,171);
+    background: linear-gradient(90deg, rgba(167,170,171,1) 20%, rgba(214,214,210,0.5998774509803921) 39%, rgba(214,214,210,1) 62%, rgba(167,170,171,1) 82%);
+    border-radius: 20px;
+}
+.r{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 80px;
+}
+.first-currency,.second-currency{
+    display: flex;
+    flex-direction: column;
+}
+.first-currency__select,.second-currency__select{
+    margin-bottom: 5px;
+    
+}
+.first-currency__input,.second-currency__input{
+    margin-bottom: 10px;
+}
+
+.error{
+    border: 2px solid red;
 }
 
 
@@ -98,7 +155,7 @@ header{
     font-size: 40px;
     padding-top: 7px;
 }
-.first-currency{
+.currency-buy,.currency-sale {
     min-width: 107px;
     text-align: center;
     border: 3px solid white;
@@ -107,23 +164,9 @@ header{
     color: #b2cc25;
     font-weight: 700;
     font-size: 40px;
-    /* margin-right: 85px; */
+}
 
-}
-.second-currency{
-    min-width: 107px;
-    text-align: center;
-    border: 3px solid white;
-    border-radius: 10px;
-    padding: 5px;
-    color: #b2cc25;
-    font-weight: 700;
-    font-size: 40px;
-}
 @media screen and (max-width: 2100px){
-    header{
-        margin-top: 60px;
-    }
     .container {
         max-width: 70%;
         margin: 0 auto;
@@ -165,14 +208,13 @@ header{
     }
 }
 @media screen and (max-width: 480px){
-    .first-currency{
-        font-size: 35px;
-        min-width: 90px;
+    // .first-currency, .second-currency{
+    //     font-size: 35px;
+    //     min-width: 95px;
+    .block-converter{
+        width: 330px;
     }
-    .second-currency{
-        font-size: 35px;
-        min-width: 90px;
-    }
+    // }
     .name-value {
         font-size: 26px;
         padding-top: 14px;
@@ -190,6 +232,9 @@ header{
 @media screen and (max-width: 412px){
     header{
         margin-top: 40px;
+    }
+    .header-title {
+        font-size: 55px;
     }
     .date{
         display: flex;
@@ -213,17 +258,11 @@ header{
         margin-left: 6%;
         font-size: 24px;
     }
-    .first-currency {
+    .first-currency, .second-currency {
         font-size: 30px;
         min-width: 80px;
     }
-    .second-currency {
-        font-size: 30px;
-        min-width: 80px;
-    }
-    .header-title {
-        font-size: 55px;
-    }
+    
 }
 @media screen and (max-width: 365px){
     .site-content {
@@ -238,11 +277,7 @@ header{
     .header-title {
         font-size: 50px;
     }
-    .first-currency {
-        font-size: 25px;
-        min-width: 70px;
-    }
-    .second-currency {
+    .first-currency, .second-currency {
         font-size: 25px;
         min-width: 70px;
     }
