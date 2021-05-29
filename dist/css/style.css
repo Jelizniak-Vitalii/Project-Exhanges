@@ -129,7 +129,7 @@ header {
   margin-top: 20px;
 }
 
-.header-title {
+header .header-title {
   text-align: center;
   font-size: 100px;
   border-bottom: 2px solid #918c8c;
@@ -138,21 +138,25 @@ header {
   font-family: 'Roboto', sans-serif;
 }
 
-/*  */
-
-.site-title {
-  text-align: center;
-}
-
-.site-title p {
+header p {
   color: wheat;
   font-size: 30px;
   padding-top: 20px;
   font-family: 'Yusei Magic', sans-serif;
+  text-align: center;
 }
 
-.date {
-  padding-top: 20px;
+header .header-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+}
+
+header .header-time .header-time__title {
   color: blanchedalmond;
   font-size: 25px;
   display: -webkit-box;
@@ -166,6 +170,14 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+header .header-time .header-time__actual {
+  color: blanchedalmond;
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+/*  */
 
 .new-date {
   color: blanchedalmond;
@@ -189,39 +201,25 @@ header {
           align-items: center;
 }
 
-.converter-title {
-  padding: 1rem;
-  border: 2px solid black;
-  background-color: #b2cc25;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
-}
-
 .block-converter {
-  width: 450px;
-  height: 250px;
-  background: #a7aaab;
-  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #a7aaab), color-stop(39%, rgba(214, 214, 210, 0.599877)), color-stop(62%, #d6d6d2), color-stop(82%, #a7aaab));
-  background: -o-linear-gradient(left, #a7aaab 20%, rgba(214, 214, 210, 0.599877) 39%, #d6d6d2 62%, #a7aaab 82%);
-  background: linear-gradient(90deg, #a7aaab 20%, rgba(214, 214, 210, 0.599877) 39%, #d6d6d2 62%, #a7aaab 82%);
-  border-radius: 20px;
-}
-
-.r {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin-top: 80px;
+  width: 500px;
+  height: 250px;
+  padding: 10px;
+  background: #a7aaab;
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #a7aaab), color-stop(39%, rgba(214, 214, 210, 0.599877)), color-stop(62%, #d6d6d2), color-stop(82%, #a7aaab));
+  background: -o-linear-gradient(left, #a7aaab 20%, rgba(214, 214, 210, 0.599877) 39%, #d6d6d2 62%, #a7aaab 82%);
+  background: linear-gradient(90deg, #a7aaab 20%, rgba(214, 214, 210, 0.599877) 39%, #d6d6d2 62%, #a7aaab 82%);
+  border-radius: 20px;
+  width: 90%;
 }
 
 .first-currency,
@@ -238,11 +236,27 @@ header {
 .first-currency__select,
 .second-currency__select {
   margin-bottom: 5px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 15px;
+  width: 90%;
 }
 
 .first-currency__input,
 .second-currency__input {
   margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 15px;
+  width: 90%;
+}
+
+.exhange {
+  margin: 0 10px;
 }
 
 .error {
@@ -321,14 +335,95 @@ header {
   font-size: 40px;
 }
 
+.converter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 70px 0px;
+}
+
+.converter .converter__title {
+  text-align: center;
+  font-size: 50px;
+  color: #ffff;
+  margin-bottom: 40px;
+}
+
+.converter-content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 2px solid;
+  padding: 100px 50px;
+}
+
+.converter-content .currency-base,
+.converter-content .currency-to-change {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.converter-content .currency-base .currency-base__select,
+.converter-content .currency-base .currency-to-change__select,
+.converter-content .currency-to-change .currency-base__select,
+.converter-content .currency-to-change .currency-to-change__select {
+  padding: 7px;
+}
+
+.converter-content .currency-base .currency-base__input,
+.converter-content .currency-base .currency-to-change__input,
+.converter-content .currency-to-change .currency-base__input,
+.converter-content .currency-to-change .currency-to-change__input {
+  margin-top: 5px;
+  padding: 7px;
+  width: 100%;
+}
+
+.converter-content .exhange i {
+  font-size: 30px;
+}
+
+.converter-content .converter-title {
+  padding: 1rem;
+  border: 2px solid black;
+  background-color: #b2cc25;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.converter-content .converter-title button {
+  font-size: 17px;
+  background: transparent;
+}
+
 @media screen and (max-width: 2100px) {
+  .block-converter {
+    width: 50%;
+  }
+
   .container {
-    max-width: 70%;
     margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 786px) {
+  .block-converter {
+    width: 70%;
+  }
+
   header {
     margin-top: 60px;
   }
@@ -352,8 +447,8 @@ header {
 }
 
 @media screen and (max-width: 585px) {
-  .container {
-    max-width: 90%;
+  .block-converter {
+    width: 95%;
   }
 
   .header-title {
@@ -374,10 +469,6 @@ header {
 }
 
 @media screen and (max-width: 480px) {
-  .block-converter {
-    width: 330px;
-  }
-
   .name-value {
     font-size: 26px;
     padding-top: 14px;
@@ -438,12 +529,6 @@ header {
   .block-choice h4 {
     margin-left: 6%;
     font-size: 24px;
-  }
-
-  .first-currency,
-  .second-currency {
-    font-size: 30px;
-    min-width: 80px;
   }
 }
 

@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.min.css">
-    <script defer src="js/script.js"></script>
-    <!-- <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script> -->
-    <!-- <script>window.LogRocket && window.LogRocket.init('u4q78m/kurs');</script> -->
+    <script defer type="module" src="js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <title>Курс Валют</title>
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="container">
-         <h1 class="header-title">Курс Валют</h1>
+            <h1 class="header-title">Курс Валют</h1>
+            <p> С помощью нашего сайта вы сможете отслеживать самый актуальный курс валют в Украине</p>
+            <div class="header-time">
+                <h4 class="header-time__title">Курс валют на</h4>
+                <span class="header-time__actual"></span>
+            </div>
         </div>
         
     </header> 
@@ -22,41 +25,10 @@
     <main>
         <section>
             <div class="container">
-                 <div class="site-title">
-                     <p> С помощью нашего сайта вы сможете отслеживать самый актуальный курс валют в Украине</p>
-                     <!-- <h3>ОБМЕН ВАЛЮТ</h3> -->
-                     <h4 class="date">Курс валют на</h4>
-                 </div>
+                
             </div>
         </section>
         
-        <section>
-            <div class="container">
-                <div class="container-converter">
-                    <div class="converter-title">
-                        <h4>Конвертер Валют</h4>
-                    </div>
-
-                    <div class="block-converter">
-                        <div class="r">
-                            <div class="first-currency">
-                                <select class="first-currency__select"></select>
-                                <input class="first-currency__input">
-                                <h5 class="first-currency__text">стоимость EUR = 111</h5>
-                            </div>
-                            <div class="exhange"><i class="fas fa-exchange-alt"></i></div>
-                            <div class="second-currency">
-                                <select class="second-currency__select"></select>
-                                <input class="second-currency__input">
-                                <h5 class="second-currency__text">стоимость EUR = 111</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
         <section>
             <div class="container">
                  <div class="site-content">
@@ -90,6 +62,54 @@
                  </div>
             </div>
         </section>
+
+        <section class="converter">
+            <div class="container">
+                <h2 class="converter__title">Конвертор Валют</h2>
+                <div class="converter-content">
+                    <div class="currency-base">
+                        <select class="currency-base__select"></select>
+                        <input class="currency-base__input" type="number"></input>
+                    </div>
+                    <div class="exhange"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="currency-to-change">
+                        <select class="currency-to-change__select"></select>
+                        <input class="currency-to-change__input" type="number"></input>
+                    </div>
+                    <div class="converter-title">
+                        <button>Конвертировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- <section>
+            <div class="container">
+                <div class="container-converter">
+                    
+
+                    <div class="block-converter">
+                        
+                            <div class="first-currency">
+                                <select class="first-currency__select"></select>
+                                <input class="first-currency__input" type="number">
+                               
+                            </div>
+                            <div class="exhange"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="second-currency">
+                                <select class="second-currency__select"></select>
+                                <input class="second-currency__input" type="number">
+                      
+                            </div>
+                     
+                        <div class="converter-title">
+                            <h4>Конвертировать</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
 
 
 
