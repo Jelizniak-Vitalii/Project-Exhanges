@@ -2,131 +2,183 @@
 @import "reset.scss";
 @import "fonts.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+$maxWidth: 1380;
+
+$fontFamily: 'Manrope', sans-serif;
+
+@mixin adaptiv-font($pcSize, $mobSize){
+    $addSize: $pcSize - $mobSize;
+    $addMobSize: $addSize + $addSize * 0.7;
+    @media (max-width: 767px){
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+    }
+    @media (min-width: 767px){
+        font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw / #{$maxWidth})));
+    }
+}
 
 body{
+    padding: 20px;
     background: rgb(29,47,101);
     background: linear-gradient(90deg, rgba(29,47,101,0.989233193277311) 0%, rgba(26,92,120,1) 45%, rgba(12,94,107,1) 100%);
 }
+
 .container{
-    max-width: 80%;
+    max-width: 1380px;
     margin: 0 auto;
 }
-header{
+
+.groupe__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
-    .header-title{
+    .active {
+        background-color: #6495ed !important;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #787272;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        margin-right: 15px;
+        font-family: $fontFamily;
+    }
+    .btn:last-child{
+        margin-right: 0;
+    }
+}
+.header {
+    .header__title{
+        font-family: $fontFamily;
         text-align: center;
-        font-size: 100px;
+        @include adaptiv-font(100, 40);
         border-bottom: 2px solid rgb(145, 140, 140);
-        padding-bottom: 15px;
+        padding-bottom: 30px;
         color: antiquewhite;
-        font-family: 'Roboto', sans-serif;
+        font-family: $fontFamily;
     }
-    p{
+    .header__text {
+        font-family: $fontFamily;
         color: wheat;
-        font-size: 30px;
+        @include adaptiv-font(30, 15);
         padding-top: 20px;
-        font-family: 'Yusei Magic', sans-serif;
+        font-family: $fontFamily;
         text-align: center;
     }
-    .header-time{
+    .header__time {
         display: flex;
         justify-content:center;
         margin-top: 30px;
-        .header-time__title{
+        .time__title {
+            font-family: $fontFamily;
             color: blanchedalmond;
-            font-size: 25px;
+            @include adaptiv-font(25, 15);
             display: flex;
             flex-direction: row;
             justify-content: center; 
         }
-        .header-time__actual{
+        .time__date {
+            font-family: $fontFamily;
             color: blanchedalmond;
-            font-size: 25px;
+            @include adaptiv-font(25, 15);
             padding-left: 10px;
         }
     }
-    
 }
 
 .rates {
+    display: block;
     margin-top:50px;
-
-    .rates-content {
-        width: 580px;
+    .rates__content {
+        max-width: 700px;
         margin: 0 auto;
-        .rates-items {
+        .rates__items {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             border-bottom: 2px solid white;
             padding-bottom: 5px;
                 & h4{
+                    font-family: $fontFamily;
                     color: #ffff;
                     font-weight: 700;
-                    font-size: 25px;
-                    margin-left: 85px;
+                    @include adaptiv-font(25, 20);
+                    margin-left: 10%;
                 }
         }
-        .rates-currency {
+        .rates__currency {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 10px 0 30px 0;
-            .rates-currency__title {
+            .currency__title {
                 color: #ffff;
+                font-family: $fontFamily;
                 font-weight: 700;
-                font-size: 40px;
+                @include adaptiv-font(40, 20);
             }
-            .rates-currency__value {
-                min-width: 107px;
+            .currency__value {
+                font-family: $fontFamily;
+                min-width: 140px;
                 text-align: center;
                 border: 3px solid white;
                 border-radius: 10px;
                 padding: 5px;
                 color: #b2cc25;
                 font-weight: 700;
-                font-size: 40px;
+                @include adaptiv-font(40, 20);
             }
         }
     }
 }
 
 .converter {
-    display: flex;
-    padding: 70px 0px;
+    display: none;
+    margin-top: 20px;
     .converter__title {
         text-align: center;
-        font-size: 50px;
+        font-family: $fontFamily;
+        @include adaptiv-font(50, 30);
         color: #ffff;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
-    .converter-content {
+    .converter__content {
+        border-radius: 25px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 2px solid;
-        padding: 100px 50px;
-        .currency-base,.currency-to-change{
+        padding: 50px 20px;
+        .currency__from,.currency__to{
             display: flex;
             flex-direction: column; 
-            .currency-base__select,.currency-to-change__select {
-                padding: 7px;
+            .currency__from_select,.currency__to_select {
+                border-radius: 10px;
+                padding: 15px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-color: #fff;
             }
-            .currency-base__input,.currency-to-change__input {
+            .currency__from_input,.currency__to_input {
+                border-radius: 10px;
                 margin-top: 5px;
-                padding: 7px;
+                padding: 15px;
                 width: 100%;
             }
         }
-        .exhange {
+        .exchange {
+            background-color: transparent;
             margin: 0 10px;
             & i{
                 font-size:30px;
             }
         }
-        .converter-button {
+        .converter__button {
             padding: 1rem;
             border: 2px solid black;
             background-color: #b2cc25;
@@ -134,10 +186,29 @@ header{
             position: absolute;
             bottom:10px;
             & button{
+                font-family: $fontFamily;
                 font-size:17px;
                 background: transparent;
             }
         } 
+    }
+}
+
+@media (max-width: 935px) {
+    .rates__items h4 {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .rates {
+        margin-top: 30px;
+    }
+    .rates__currency, .currency__value {
+       min-width: 80px !important;
+    }
+    .rates__items {
+        justify-content: space-around !important;
     }
 }
 

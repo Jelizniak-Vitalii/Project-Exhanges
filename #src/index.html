@@ -12,65 +12,67 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="header-title">Курс Валют</h1>
-            <p> С помощью нашего сайта вы сможете отслеживать самый актуальный курс валют в Украине</p>
-            <div class="header-time">
-                <h4 class="header-time__title">Курс валют на</h4>
-                <span class="header-time__actual"></span>
+            <h1 class="header__title">Курс Валют</h1>
+            <p class="header__text"> С помощью нашего сайта вы сможете отслеживать самый актуальный курс валют в Украине</p>
+            <div class="header__time">
+                <h4 class="time__title">Курс валют на</h4>
+                <span class="time__date"></span>
             </div>
         </div>
     </header> 
     
-    <main>
+    <main class="main">
+        <div class="groupe__btn">
+            <button class="btn__currencyRates btn active">Курс Валют</button>
+            <button class="btn__convertor btn">Конвертор Валют</button>
+        </div>
         <div class="rates">
             <div class="container">
-                <div class="rates-content">
-                    <div class="rates-items">
+                <div class="rates__content">
+                    <div class="rates__items">
                         <h4>Валюта</h4>
                         <h4>Покупка</h4>
                         <h4>Продажа</h4>
                     </div>
 
-                    <div class="rates-currency">
-                        <div class="rates-currency__title"></div>
-                        <div class="rates-currency__value currency-buy"></div>
-                        <div class="rates-currency__value currency-sale"></div>
+                    <div class="rates__currency">
+                        <div class="currency__title"></div>
+                        <div class="currency__value currency-buy"></div>
+                        <div class="currency__value currency-sale"></div>
                     </div>
-                    
-                    <div class="rates-currency">
-                        <div class="rates-currency__title"></div>
-                        <div class="rates-currency__value currency-buy"></div>
-                        <div class="rates-currency__value currency-sale"></div>
+
+                    <div class="rates__currency">
+                        <div class="currency__title"></div>
+                        <div class="currency__value currency-buy"></div>
+                        <div class="currency__value currency-sale"></div>
                     </div>
-                    
-                    <div class="rates-currency">
-                        <div class="rates-currency__title"></div>
-                        <div class="rates-currency__value currency-buy"></div>
-                        <div class="rates-currency__value currency-sale"></div>
+
+                    <div class="rates__currency">
+                        <div class="currency__title"></div>
+                        <div class="currency__value currency-buy"></div>
+                        <div class="currency__value currency-sale"></div>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <section class="converter">
+         <section class="converter">
             <div class="container">
                 <h2 class="converter__title">Конвертор Валют</h2>
-                <div class="converter-content">
-                    <div class="currency-base">
-                        <select class="currency-base__select"></select>
-                        <input class="currency-base__input" type="number"></input>
+                <div class="converter__content">
+                    <div class="currency__from">
+                        <select class="currency__from_select"></select>
+                        <input class="currency__from_input" type="number" inputmode="tel">
                     </div>
-                    <div class="exhange"><i class="fas fa-exchange-alt"></i></div>
-                    <div class="currency-to-change">
-                        <select class="currency-to-change__select"></select>
-                        <input class="currency-to-change__input" type="number"></input>
-                    </div>
-                    <div class="converter-button">
-                        <button>Конвертировать</button>
+                    <button class="exchange"><i class="fas fa-exchange-alt"></i></button>
+                    <div class="currency__to">
+                        <select class="currency__to_select"></select>
+                        <input class="currency__to_input" type="number" readonly="readonly">
                     </div>
                 </div>
             </div>
         </section>
+    </main>
 </body>
 </html>

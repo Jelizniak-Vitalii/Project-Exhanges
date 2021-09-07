@@ -1,5 +1,3 @@
-// Start Time
-
 function zeroFirstFormat(value){
     if(value < 10){
         value = '0'+value;
@@ -10,7 +8,7 @@ function zeroFirstFormat(value){
 function getTime(){
     let date = new Date();
     let day = zeroFirstFormat(date.getDate());
-    let month = zeroFirstFormat(date.getMonth());
+    let month = zeroFirstFormat(date.getMonth() + 1);
     let year = zeroFirstFormat(date.getFullYear());
     let hours = zeroFirstFormat(date.getHours());
     let minutes = zeroFirstFormat(date.getMinutes());
@@ -18,9 +16,5 @@ function getTime(){
 
     return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
 }
-    
-
-
-//  End Time
 
 export default getTime;
